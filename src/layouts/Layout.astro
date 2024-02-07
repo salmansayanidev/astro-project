@@ -56,9 +56,12 @@ const { title } = Astro.props;
 							<ul>
 								{
 									links.map( (link) => {
+										return (
 										<li>
 											<a href={link.href}>{link.title}</a>	
 										</li>
+										)
+										
 									}) 
 								}							
 							</ul>
