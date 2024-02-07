@@ -1,0 +1,84 @@
+---
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import { Image } from "astro:assets";
+import Logo from "../assets/Logo.png"
+
+interface Props {
+	title: string;
+}
+
+const links = [
+	{
+		title: "home",
+		href : "https://docs.astro.build/en/basics/layouts/",
+	},
+	{
+		title: "about",
+		href : "https://docs.astro.build/en/basics/layouts/",
+	},
+	{
+		title: "service",
+		href : "https://docs.astro.build/en/basics/layouts/",
+	},
+	{
+		title: "contact",
+		href : "https://docs.astro.build/en/basics/layouts/",
+	},
+
+]
+
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header id="header">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-4 col-lg-2">
+						<div class="logo-area">
+							<Image class="logo" src={Logo} alt="header logo" />
+						</div>
+					</div>
+					<div class="col-12 col-lg-5">
+						<nav>
+							<ul>
+								{
+									links.map( (link) => {
+										<li>
+											<a href={link.href}>{link.title}</a>	
+										</li>
+									}) 
+								}							
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+	</body>
+</html>
+
+<style is:global>
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+	ul , li , ol , h1 , h2 , h3 , h4 , h5 , h6 , a {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+</style>
